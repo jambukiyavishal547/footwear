@@ -1,0 +1,150 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Footwear</title>
+   
+	</head>
+	<body>
+	<form method="POST" action="{% url 'index' %}" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<p class="bread"><span><a href="{% url 'index' %}"></a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+		</div>
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+						<h2>Best Sellers</h2>
+					</div>
+				</div>
+				<div class="row ">
+					{% for i in products %}
+					<div class="col-lg-3 mb-4 text-center " style="font-size-adjust: 1;">
+						<div class="product-entry border">
+							{% if request.session.email %}
+							<a href="{% url 'singel-product-detail' pk=i.pk %}" class="prod-img">
+							{% else %}
+								<a href="{% url 'singin' %}">
+							{% endif %}
+								<img src="{{i.product_image.url}}" height="250px" width="250px">
+							</a>
+							<div class="desc">
+								<h5>{{i.product_category}}</h5>
+								<h2>{{i.product_name}}</h2>
+								<span class="price"> ₹ {{i.product_price}}</span>
+								<h5>{{i.product_desc}}</h5>
+							</div>
+						</div>
+					</div>
+				
+				{% endfor %}
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!---<div style="margin: 10px 10px 10px 120px">
+			<h2>Total Product - {{products.count}}</h2>
+		</div>
+		<div>
+		<ul>
+			<li style="margin: 10px 10px 10px 170px"><a href="{% url 'seller-view-product' %}" class="active">All</a></li>
+			<li ><a href="{% url 'seller-view-male' %}" >Male</a></li>
+			<li ><a href="{% url 'seller-view-female' %}" >Female</a></li>
+		</ul>
+		</div>
+		 {% for i in products %}
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row row-pb-lg product-detail-wrap">
+					<div class="col-sm-6">
+						<div>
+							<div class="item">
+								<div  style="margin-top: 30px">
+									<a href="{{i.product_image.url}}">
+										<img src="{{i.product_image.url}}" alt="" width="400px" height="400px">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="product-desc">
+							<h3>{{i.product_name}}</h3>
+							<p class="price">
+								<span> ₹ {{i.product_price}}</span> 
+							</p>
+							<p>{{i.product_category}}</p>
+							<p>{{i.product_desc}}</p>
+							<div class="size-wrap">
+								
+				            <div class="block-26 mb-4">
+				             </ul>
+				         </div>
+							</div>
+              <div class="row">
+	             	<div class="col-sm-6 text-center" style="margin-right: -60px;">
+									<p class="addtocart">
+										<a href="{% url 'seller-edit-product' pk=i.pk %}" class="btn btn-primary btn-addtocart">
+										<i class="icon-edit"></i> Edit</a></p>
+								</div>
+								<div class="col-sm-6 text-center">
+									<p class="addtocart">
+										<a href="{% url 'seller-delete-product' pk=i.pk %}" class="btn btn-primary btn-addtocart">
+										<i class="icon-delete"></i>Delete </a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-md-12 pills">
+								<div class="bd-example bd-example-tabs">
+								  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+								    <li class="nav-item">
+								      <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Description</a>
+								    </li>
+								  </ul>
+								  <div class="tab-content" id="pills-tabContent">
+								    <div class="tab-pane border fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+								      <p>{{i.product_desc}}</p>
+								    
+									   		</div>
+								   		</div>
+								   	</div>
+								    </div>
+								  </div>
+								</div>
+				       		</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endfor %}--->
+</form>
+	</body>
+</html>
+
+{% endblock %}

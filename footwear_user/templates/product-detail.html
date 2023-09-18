@@ -1,0 +1,113 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
+   
+	</head>
+	<body>
+	<form method="POST" action="{% url 'product-detail' %}" enctype="multipart/form-data"  >
+
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col" style="margin-top: 40px;">
+						<p class="bread"><span><a href="{% url 'index' %}">Home</a></span> / <span>Product Details</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					{% for i in products %}
+					<div class="col-sm-8" style="margin-top: 30px;">
+						<div >
+							<div class="item">
+								<div class="product-border">
+									<a href=" " class="prod-img">
+										<img src="{{i.product_image.url}}" alt="Free html5 bootstrap 4" height="300px" width="300px">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="product-desc">
+							<h3>{{i.product_name}}</h3>
+							<p class="price">
+								<span> ₹ {{i.product_price}}</span> 
+							</p>
+							<p>{{i.product_desc}}</p>
+                     <div class="input-group mb-4">
+                     	<span class="input-group-btn">
+                        	<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
+                           <i class="icon-minus2"></i>
+                        	</button>
+                    		</span>
+                     	<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="10">
+                     	<span class="input-group-btn ml-1">
+                        	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                             <i class="icon-plus2"></i>
+                         </button>
+                     	</span>
+                  	</div>
+                  	<div class="row">
+	                  	<div class="col-sm-12 text-center">
+	                <!--- cart  --->  		
+									<a href="{% url 'add-to-cart' pk=i.pk %}" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a>
+									<!-- wishlist  --> 
+									<a href="{% url 'add-to-wishlist' pk=i.pk %}" class="btn btn-primary btn-addtocart"><i class="icon-heart"></i> Add to Wishlist</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+
+	<script>
+		$(document).ready(function(){
+
+		var quantitiy=0;
+		   $('.quantity-right-plus').click(function(e){
+		        
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		            
+		            $('#quantity').val(quantity + 1);
+
+		          
+		            // Increment
+		        
+		    });
+
+		     $('.quantity-left-minus').click(function(e){
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		      
+		            // Increment
+		            if(quantity>0){
+		            $('#quantity').val(quantity - 1);
+		            }
+		    });
+		    
+		});
+	</script>
+</form>
+	</body>
+</html>
+
+{% endblock %}

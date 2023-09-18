@@ -1,0 +1,62 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Footwear</title>
+   
+	</head>
+	<body>
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col" style="margin-top: 40px ;">
+						<p class="bread"><span><a href="{% url 'index' %}">Home</a></span> / <span>Women</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="breadcrumbs-two">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs-img" style="background-image: url({% static 'images/cover-img-1.jpg' %});">
+							<h2>Women's</h2>
+						</div>
+						<div class="menu text-center">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					{% for i in products %}
+					<div class="col-lg-3 mb-4 text-center " style="font-size-adjust: 1;">
+						<div class="product-entry border">
+							{% if request.session.email %}
+							<a href="{% url 'singel-product-detail' pk=i.pk %}" class="prod-img">
+							{% else %}
+								<a href="{% url 'singin' %}">
+							{% endif %}
+								<img src="{{i.product_image.url}}" height="250px" width="250px">
+							</a>
+							<div class="desc">
+								<h5>{{i.product_category}}</h5>
+								<h2>{{i.product_name}}</h2>
+								<span class="price"> ₹ {{i.product_price}}</span>
+								<h5>{{i.product_desc}}</h5>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+{% endblock %}

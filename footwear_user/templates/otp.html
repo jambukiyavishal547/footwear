@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+  <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="bread"><span><a href="{% url 'index' %}">Home</a></span> / <span>Verify OTP</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="testmonial__pic set-bg">
+  <div class="row">
+    <div class="container" align="text-left" style="margin-left: 300px;">
+    <div class="col-lg-8">
+    
+    <form method="POST" class="colorlib-form" action="{% url 'verify-otp' %}">
+      {% csrf_token %}
+      <h2>Verify OTP</h2>
+            <div class="row">
+            {% if msg %}
+              <b style=" color: darkred;">{{msg}}</b>
+            {% endif %}
+                <div class="col-md-12">
+                    <div class="form-group"></div>
+                   </div>
+              <div class="col-md-6">
+              <input type="hidden" name="otp" value="{{otp}}">
+              <input type="hidden" name="email" value="{{email}}">
+                <div class="form-group">
+                  <label for="email">Enter OTP</label>
+                  <input type="input" name="uotp" id="uotp" class="form-control" placeholder="Your otp">
+                  <input type="submit" name="action" value="Verify OTP" style="margin-top: 20px;">
+                </div>
+                </div>  
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+</body>
+</html>
+
+
+{% endblock %}

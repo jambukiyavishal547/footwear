@@ -1,0 +1,104 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p class="bread"><span><a href="{% url 'index' %}">Home</a></span> / <span>Sing Up</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="container" align="text-left" style="margin-left: 300px;">
+		<div class="col-lg-8">
+		{% if msg %}
+			<b style=" color: darkred;">{{msg}}</b>
+		{% endif %}
+		<form method="POST" name="singup" class="colorlib-form" enctype="multipart/form-data" action="{% url 'singup' %}">
+			{% csrf_token %}
+			<h2>Sing Up</h2>
+		       	<div class="row">
+		            <div class="col-md-12">
+		                <div class="form-group">
+		                    <div class="form-field"></div>
+		                </div>
+		            </div>
+		               <div class="col-md-12">
+		               	    <div class="form-group">
+								<select class="input" name="usertype">
+									<option>--- select User Type---</option>
+									<option value="buyer">Buyer</option>
+									<option value="seller">Seller</option>
+								</select>
+							</div>
+		               </div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="fname">First Name</label>
+									<input type="text" name="fname" id="fname" class="form-control" placeholder="Your firstname">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="lname">Last Name</label>
+									<input type="text" name="lname" id="lname" class="form-control" placeholder="Your lastname">
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="form-group">
+									<label for="companyname">Mobile</label>
+			                    	<input type="text" name="mobile" class="form-control" placeholder="mobile">
+			                    </div>
+			                </div>
+			               <div class="col-md-10">
+								<div class="form-group">
+									<label for="fname">Address</label>
+			                    	<input type="text" name="address" class="form-control" placeholder="Enter Your Address">
+			                    </div>
+			               </div>
+			               <div class="col-md-8">
+								<div class="form-group">
+									<label for="companyname">Email</label>
+			                    	<input type="email" name="email" class="form-control" placeholder="Email Id">
+ 				                  </div>
+	 				        </div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="stateprovince">Password</label>
+										<input type="password" name="password" class="form-control" placeholder="Password">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="stateprovince"> Comfirm Password</label>
+										<input type="password" name="cpassword" class="form-control" placeholder="Password">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="file" name="profile_pic" >
+									</div>
+								</div>
+								<div style="margin-left: 285px;">
+									<input type="submit" name="action" value="SING Up">
+								</div>
+				</div>
+		</form>
+	</div>
+</div>
+</div>
+</body>
+</html>
+
+
+{% endblock %}

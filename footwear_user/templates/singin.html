@@ -1,0 +1,66 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col" style="margin-top: 40px;">
+					<p class="bread"><span><a href="{% url 'index' %}">Home</a></span> / <span>Sing In</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="testmonial__pic set-bg">
+	<div class="row">
+		<div class="container" align="text-left" style="margin-left: 300px;">
+		<div class="col-lg-8">
+		
+		<form method="POST" class="colorlib-form" action="{% url 'singin' %}">
+			{% csrf_token %}
+			<h2>Sing In</h2>
+		       	<div class="row">
+		       		{% if msg %}
+		       			<b style=" color: darkred;">{{msg}}</b>
+					{% endif %}
+		            <div class="col-md-12">
+		                <div class="form-group"></div>
+		               </div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input type="text" name="email" id="email" class="form-control" placeholder="Your Email">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input type="Password" name="password" id="password" class="form-control" placeholder="Your Password">
+								</div>
+								<div class="form-group" style="margin-left: -50px">
+									<div><input type="submit" name="action" value="SING IN"></div>
+								</div>
+								<div class="form-group" style="margin-left: -80px">
+									<div>
+										<a href="{% url 'forgot-password' %}">Forgot Password ??</a>
+									</div>
+								</div>	
+							</div>
+						</div>
+		</form>
+		</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+
+{% endblock %}

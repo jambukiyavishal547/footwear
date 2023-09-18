@@ -1,0 +1,45 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
+	</head>
+	<body>
+	<form method="POST" action="{% url 'about' %}">
+		{% csrf_token %}
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col" style="margin-top: 40px;">
+						<p class="bread"><span><a href="{% url 'index' %}">Home</a></span> / <span>About</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="colorlib-about">
+			<div class="container">
+				<div class="row row-pb-lg">
+					<div class="col-sm-6 mb-3">
+						<div>
+							<img src="{% static 'images/about.jpg' %}" height="450px" width="450px">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="about-wrap">
+							<h2>Footwear the leading eCommerce Store around the Globe</h2>
+							<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+							<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	</body>
+</html>
+
+{% endblock %}

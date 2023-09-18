@@ -1,0 +1,77 @@
+{% extends 'seller-header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+	
+	</head>
+	<body>
+
+		<!---<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+						<h2>Best Sellers</h2>
+					</div>
+				</div>
+				{% for i in products %}
+				<div class="row row-pb-md">
+					<div class="col-lg-3 mb-4 text-center">
+						<div class="product-entry border">
+							<a href="#" class="prod-img">
+								<img src="{{i.product_image.url}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
+							</a>
+							<div class="desc">
+								<h2><a href="#">{{i.product_name}}</a></h2>
+								<span class="price">{{i.product_price}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
+					</div>
+				</div>
+			</div>
+		</div> --->
+		
+		
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+						<h2>Best Sellers</h2>
+					</div>
+				</div>
+				<div class="row ">
+					{% for i in products %}
+					<div class="col-lg-3 mb-4 text-center">
+						<div class="product-entry border">
+							<a href="{% url 'seller-product-detail' pk=i.pk %}" class="prod-img">
+								<img src="{{i.product_image.url}}" height="250px" width="250px">
+							</a>
+							<div class="desc">
+								<h5>{{i.product_category}}</h5>
+								<h2><a href="#">{{i.product_name}}</a></h2>
+								<span class="price"> ₹ {{i.product_price}}</span>
+								<h5>{{i.product_desc}}</h5>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+
+{% endblock %}
